@@ -50,8 +50,13 @@ type Particle struct {
 
 type tickMsg time.Time
 
+const (
+	offsetWindowWidth  int = 6
+	offsetWindowHeight int = 10
+)
+
 func NewPortfolioModel(width, height int) *PortfolioModel {
-	vp := viewport.New(width-4, height-8)
+	vp := viewport.New(width-offsetWindowWidth, height-offsetWindowHeight)
 
 	model := &PortfolioModel{
 		sections: []Section{
@@ -89,8 +94,8 @@ func (m *PortfolioModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		m.width = msg.Width
 		m.height = msg.Height
-		m.viewport.Width = msg.Width - 4
-		m.viewport.Height = msg.Height - 8
+		m.viewport.Width = msg.Width - offsetWindowWidth
+		m.viewport.Height = msg.Height - offsetWindowHeight
 		m.updateContent()
 		if !m.ready {
 			m.ready = true
@@ -218,7 +223,7 @@ func (m *PortfolioModel) updateParticles() {
 		p.life -= 0.015
 
 		// Remove dead or out-of-bounds particles
-		if p.life <= 0 || p.x < -5 || p.x >= float64(m.viewport.Width+5) || p.y >= float64(m.viewport.Height+5) {
+		if p.life <= 0 || p.x < -5 || p.x >= float64(m.viewport.Width+offsetWindowWidth) || p.y >= float64(m.viewport.Height+offsetWindowHeight) {
 			m.particles = append(m.particles[:i], m.particles[i+1:]...)
 		}
 	}
@@ -229,8 +234,8 @@ func (m *PortfolioModel) renderParticles() string {
 		return ""
 	}
 
-	width := m.viewport.Width
-	height := m.viewport.Height
+	width := m.viewport.Width - offsetWindowWidth
+	height := m.viewport.Height - offsetWindowHeight
 
 	if width <= 0 || height <= 0 {
 		return ""
@@ -326,11 +331,8 @@ func (m *PortfolioModel) View() string {
 
 	var content strings.Builder
 
-	// Header
-	content.WriteString(m.renderHeader())
-	content.WriteString("\n")
-
 	// Navigation tabs
+	content.WriteString("\n")
 	content.WriteString(m.renderTabs())
 	content.WriteString("\n")
 
@@ -364,41 +366,6 @@ func (m *PortfolioModel) renderLoadingScreen() string {
     `, frame)
 
 	return m.styles.Header.Render(loading)
-}
-
-func (m *PortfolioModel) renderHeader() string {
-	title := "🚀 Portfolio Terminal"
-	subtitle := "Interactive Developer Portfolio"
-
-	sparkles := []string{"✨", "⭐", "🌟", "💫"}
-	sparkle := sparkles[m.animationTick%len(sparkles)]
-
-	titleWithEffects := sparkle + " " + title + " " + sparkle
-	headerContent := titleWithEffects + "\n" + m.styles.Subtitle.Render(subtitle)
-
-	statusLine := m.renderStatusIndicators()
-	headerContent += "\n" + statusLine
-
-	return m.styles.Header.Render(headerContent)
-}
-
-func (m *PortfolioModel) renderStatusIndicators() string {
-	var indicators []string
-
-	if m.effectsEnabled {
-		indicators = append(indicators, "🎬 Effects: ON")
-	} else {
-		indicators = append(indicators, "📺 Effects: OFF")
-	}
-
-	if len(m.particles) > 0 {
-		indicators = append(indicators, fmt.Sprintf("⚡ Particles: %d", len(m.particles)))
-	}
-
-	uptime := time.Since(m.startTime).Truncate(time.Second)
-	indicators = append(indicators, fmt.Sprintf("⏱️ Uptime: %v", uptime))
-
-	return m.styles.FooterLeft.Render(strings.Join(indicators, " │ "))
 }
 
 func (m *PortfolioModel) renderTabs() string {
@@ -450,7 +417,7 @@ func (m *PortfolioModel) renderTabs() string {
 }
 
 func (m *PortfolioModel) renderFooter() string {
-	help := "Tab/Shift+Tab: Navigate • h: Help • e: Toggle Effects • x: Explosion • q: Quit"
+	help := "Tab/Shift+Tab: Navigate • ?: Help • e: Toggle Effects • x: Explosion • q: Quit"
 
 	status := ("💻 Portfolio on Interactive Terminal 🎮")
 
@@ -504,10 +471,10 @@ func (m *PortfolioModel) getSectionContent(section Section) string {
 func (m *PortfolioModel) renderHelp() string {
 	help := `
 🎮 Navigation & Controls:
-  Tab              Next section
-  Shift+Tab        Previous section  
-  ↑ ↓              Scroll content
-  h                Toggle help (this section)
+  Tab/l            Next section
+  Shift+Tab/h      Previous section  
+  ↑ ↓/k j          Scroll content
+  ?                Toggle help (this section)
   q / Ctrl+C       Quit
 
 🎬 Effects:
@@ -521,15 +488,15 @@ func (m *PortfolioModel) renderHelp() string {
   📞 Contact       Get in touch information
 
 💡 Tips:
-  • Press 'h' anytime to access help
+  • Press '?' anytime to access help
   • This runs entirely in your terminal!
 
 🌈 Theme:
   • Using beautiful Catppuccin Mocha color palette
 
 🚀 Getting Started:
-  • Use Tab/Shift+Tab to navigate between main sections
-  • Press 'h' to return here anytime
+  • Use Tab/Shift+Tab | h/l to navigate between main sections
+  • Press '?' to return here anytime
   • Try 'x' for particle explosions
   • Toggle effects with 'e' if needed
 `

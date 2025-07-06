@@ -16,7 +16,7 @@ A beautiful, interactive terminal-based portfolio application built with Go and 
 | Key | Action |
 |-----|--------|
 | `Tab` / `Shift+Tab` | Navigate sections |
-| `h` | Toggle help (right-aligned tab) |
+| `?` | Toggle help (right-aligned tab) |
 | `x` | Trigger particle explosion |
 | `e` | Toggle effects on/off |
 | `↑` `↓` | Scroll content |

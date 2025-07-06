@@ -20,8 +20,8 @@ func DefaultKeyMap() KeyMap {
 			key.WithHelp("q", "quit"),
 		),
 		Help: key.NewBinding(
-			key.WithKeys("h", "?"),
-			key.WithHelp("h/?", "help"),
+			key.WithKeys("?"),
+			key.WithHelp("?", "help"),
 		),
 		Next: key.NewBinding(
 			key.WithKeys("right", "l"),
@@ -47,17 +47,5 @@ func DefaultKeyMap() KeyMap {
 			key.WithKeys("down", "j"),
 			key.WithHelp("↓/j", "scroll down"),
 		),
-	}
-}
-
-func (k KeyMap) ShortHelp() []key.Binding {
-	return []key.Binding{k.Tab, k.ShiftTab, k.Help, k.Quit}
-}
-
-func (k KeyMap) FullHelp() [][]key.Binding {
-	return [][]key.Binding{
-		{k.Tab, k.ShiftTab, k.Next, k.Prev},
-		{k.Up, k.Down},
-		{k.Help, k.Quit},
 	}
 }
