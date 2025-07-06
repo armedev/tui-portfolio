@@ -19,9 +19,7 @@ const (
 	AboutSection Section = iota
 	ExperienceSection
 	SkillsSection
-	ProjectsSection
 	ContactSection
-	LiveSection
 	HelpSection // Add Help as a section but not in navigation
 )
 
@@ -60,9 +58,7 @@ func NewPortfolioModel(width, height int) *PortfolioModel {
 			AboutSection,
 			ExperienceSection,
 			SkillsSection,
-			ProjectsSection,
 			ContactSection,
-			LiveSection,
 			// Help section excluded from normal navigation
 		},
 		currentSection: AboutSection,
@@ -106,8 +102,8 @@ func (m *PortfolioModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.updateParticles()
 		}
 
-		// Update content for live sections
-		if m.currentSection == LiveSection {
+		// Update content for sections with real-time data (About section)
+		if m.currentSection == AboutSection {
 			m.updateContent()
 		}
 
@@ -192,7 +188,7 @@ func (m *PortfolioModel) addExplosion(x, y int) {
 
 	// Create explosion particles
 	particleCount := 20 + rand.Intn(10)
-	for i := 0; i < particleCount; i++ {
+	for range particleCount {
 		angle := rand.Float64() * 2 * math.Pi
 		speed := 1.0 + rand.Float64()*3.0
 
@@ -281,14 +277,11 @@ func (m *PortfolioModel) overlayParticles(base string) string {
 	baseLines := strings.Split(base, "\n")
 	overlayLines := strings.Split(particlesOverlay, "\n")
 
-	maxLines := len(baseLines)
-	if len(overlayLines) > maxLines {
-		maxLines = len(overlayLines)
-	}
+	maxLines := max(len(overlayLines), len(baseLines))
 
 	result := make([]string, maxLines)
 
-	for i := 0; i < maxLines; i++ {
+	for i := range maxLines {
 		var baseLine, overlayLine string
 
 		if i < len(baseLines) {
@@ -309,14 +302,11 @@ func (m *PortfolioModel) combineLine(base, overlay string) string {
 	baseRunes := []rune(base)
 	overlayRunes := []rune(overlay)
 
-	maxLen := len(baseRunes)
-	if len(overlayRunes) > maxLen {
-		maxLen = len(overlayRunes)
-	}
+	maxLen := max(len(overlayRunes), len(baseRunes))
 
 	result := make([]rune, maxLen)
 
-	for i := 0; i < maxLen; i++ {
+	for i := range maxLen {
 		if i < len(overlayRunes) && overlayRunes[i] != ' ' {
 			result[i] = overlayRunes[i]
 		} else if i < len(baseRunes) {
@@ -419,19 +409,15 @@ func (m *PortfolioModel) renderTabs() string {
 		AboutSection:      "About",
 		ExperienceSection: "Experience",
 		SkillsSection:     "Skills",
-		ProjectsSection:   "Projects",
 		ContactSection:    "Contact",
-		LiveSection:       "Live Demo",
 		HelpSection:       "Help",
 	}
 
 	icons := map[Section]string{
 		AboutSection:      "👋",
 		ExperienceSection: "💼",
-		SkillsSection:     "🎮",
-		ProjectsSection:   "🚀",
+		SkillsSection:     "🚀",
 		ContactSection:    "📞",
-		LiveSection:       "🎮",
 		HelpSection:       "❓",
 	}
 
@@ -506,12 +492,8 @@ func (m *PortfolioModel) getSectionContent(section Section) string {
 		return m.renderExperience()
 	case SkillsSection:
 		return m.renderSkills()
-	case ProjectsSection:
-		return m.renderProjects()
 	case ContactSection:
 		return m.renderContact()
-	case LiveSection:
-		return m.renderLiveDemo()
 	case HelpSection:
 		return m.renderHelp()
 	default:
@@ -533,25 +515,17 @@ func (m *PortfolioModel) renderHelp() string {
   x                Trigger explosion at center
 
 📋 Sections:
-  👋 About         Personal introduction and overview
+  👋 About         Personal introduction, current time, and tech facts
   💼 Experience    Professional work history
-  🎮 Skills        Technical expertise and proficiency
-  🚀 Projects      Featured development projects
+  🚀 Skills        Technical expertise and proficiency
   📞 Contact       Get in touch information
-  🎮 Live Demo     Interactive demonstrations
 
 💡 Tips:
-  • Resize your terminal to see responsive design
-  • Use particle effects to add some fun to presentations
-  • Help tab is always visible on the right
   • Press 'h' anytime to access help
-  • All content is easily customizable in the source code
   • This runs entirely in your terminal!
 
 🌈 Theme:
   • Using beautiful Catppuccin Mocha color palette
-  • Designed for comfortable long-term viewing
-  • Particle explosions use theme colors
 
 🚀 Getting Started:
   • Use Tab/Shift+Tab to navigate between main sections
