@@ -1,0 +1,299 @@
+{
+  "personal": {
+    "name": "ABDUL HAMEED",
+    "nickname": "Armedev",
+    "title": "Software Developer",
+    "location": "Bangalore, India",
+    "timezone": "IST (UTC+5:30)",
+    "about": {
+      "intro": "I am a tech enthusiast with an awesome skillset based in India.",
+      "whatIDo": "I like $(COMPUTERS) and their C00l $tacks. I'm passionate about exploring new technologies, building innovative projects, and continuously expanding my knowledge in the ever-evolving world of technology.",
+      "background": [
+        "Information Science graduate with a strong foundation in computer systems",
+        "Tech enthusiast who loves diving deep into different technology stacks",
+        "Based in India, contributing to the global tech community",
+        "Always eager to learn and adapt to new technological challenges"
+      ],
+      "philosophy": "I believe in continuous learning and staying curious about emerging technologies. The world of computing fascinates me, and I enjoy exploring everything from low-level systems to modern development frameworks."
+    },
+    "contact": {
+      "email": "armedev@protonmail.com",
+      "github": "github.com/armedev",
+      "linkedin": "linkedin.com/in/abdul-hameed-armedev",
+      "portfolio": "arme.dev",
+      "preferredContact": "Email or LinkedIn",
+      "responseTime": "Usually within 24 hours",
+      "availableFor": [
+        "Full-stack development opportunities",
+        "Technical discussions and collaboration",
+        "Open source contributions",
+        "Consulting and freelance projects"
+      ],
+      "specializations": [
+        "Microservices architecture and system design",
+        "Payment systems and financial technology",
+        "Modern web development",
+        "Backend development",
+        "Database design and optimization"
+      ]
+    }
+  },
+  "experiences": [
+    {
+      "title": "Software Developer",
+      "company": "Tursio",
+      "period": "Jun 2025 - Present",
+      "location": "Bengaluru, India (On-site)",
+      "type": "Full-time",
+      "current": true,
+      "details": [
+        "Currently working as a Full-time Software Developer",
+        "Building scalable software solutions and contributing to product development",
+        "Working with modern technology stacks and development practices",
+        "Collaborating with cross-functional teams to deliver high-quality software"
+      ],
+      "technologies": [
+        "Modern web technologies",
+        "cloud platforms"
+      ]
+    },
+    {
+      "title": "Software Developer",
+      "company": "Gida Technologies",
+      "period": "September 2023 - May 2025",
+      "location": "Bengaluru, India (On-site)",
+      "type": "Full-time",
+      "current": false,
+      "details": [
+        "Built and maintained full-stack web applications using Next.js and NestJS",
+        "Developed multiple products: AgeEasyByAntara (Max group), Ergo Self-Help Portal (HDFC), Convenex Portal (HDFC)",
+        "Created and integrated RESTful APIs for efficient data management and user authentication",
+        "Utilized Next.js features like SSR and SSG to optimize application performance and SEO"
+      ],
+      "technologies": [
+        "Next.js",
+        "NestJS",
+        "TypeScript",
+        "REST APIs",
+        "SSR",
+        "SSG"
+      ]
+    },
+    {
+      "title": "Full-Stack Developer Intern",
+      "company": "BurdenOff Consultancy Services",
+      "period": "Feb 2023 - Jun 2023",
+      "location": "Remote",
+      "type": "Internship",
+      "current": false,
+      "details": [
+        "Designed and implemented a payment model to support seamless transactions",
+        "Introduced adapter architecture to ensure flexibility and reduce reliance on single payment provider",
+        "Integrated Stripe for payment processing with webhooks and 2-way verification",
+        "Developed PaymentMethod model for secure payment storage and recurring payments"
+      ],
+      "technologies": [
+        "Stripe API",
+        "Payment Architecture",
+        "Webhooks",
+        "Security Implementation"
+      ]
+    },
+    {
+      "title": "Full-Stack Developer Intern",
+      "company": "BurdenOff Consultancy Services",
+      "period": "Jun 2022 - Dec 2022",
+      "location": "Remote",
+      "type": "Internship",
+      "current": false,
+      "details": [
+        "Worked on Payment, Notification, Billing/Account, Wallet, Store, and Product modules",
+        "Designed type-safe, clean model structure to enhance security and prevent vulnerabilities",
+        "Added and enhanced features using GraphQL, TypeScript, and ArangoDB",
+        "Ensured efficient and scalable functionality across all modules"
+      ],
+      "technologies": [
+        "GraphQL",
+        "TypeScript",
+        "ArangoDB",
+        "Security Architecture"
+      ]
+    },
+    {
+      "title": "React Developer Intern",
+      "company": "NETART-INDIA",
+      "period": "Jun 2021 - Jan 2022",
+      "location": "Remote",
+      "type": "Internship",
+      "current": false,
+      "details": [
+        "Built R&D dashboard using React and FireCMS for generating SEO reports",
+        "Implemented scheduler to prevent data capture clashes",
+        "Automated data capture process with UIvision and App Script API",
+        "Reduced manual workload significantly through automation"
+      ],
+      "technologies": [
+        "React",
+        "FireCMS",
+        "UIvision",
+        "Google App Script",
+        "SEO Tools"
+      ]
+    }
+  ],
+  "skills": {
+    "💻 Programming Languages": [
+      {
+        "name": "TypeScript",
+        "percentage": 90,
+        "experience": "Advanced"
+      },
+      {
+        "name": "JavaScript",
+        "percentage": 90,
+        "experience": "Advanced"
+      },
+      {
+        "name": "Rust",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "Golang",
+        "percentage": 85,
+        "experience": "Advanced"
+      },
+      {
+        "name": "C++",
+        "percentage": 75,
+        "experience": "Intermediate"
+      }
+    ],
+    "🚀 Frontend Frameworks": [
+      {
+        "name": "React.js",
+        "percentage": 95,
+        "experience": "Expert"
+      },
+      {
+        "name": "Next.js",
+        "percentage": 95,
+        "experience": "Expert"
+      },
+      {
+        "name": "Solid.js",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "HTML/CSS",
+        "percentage": 95,
+        "experience": "Expert"
+      }
+    ],
+    "⚡ Backend & APIs": [
+      {
+        "name": "NestJS",
+        "percentage": 90,
+        "experience": "Advanced"
+      },
+      {
+        "name": "Node.js",
+        "percentage": 85,
+        "experience": "Advanced"
+      },
+      {
+        "name": "REST APIs",
+        "percentage": 95,
+        "experience": "Expert"
+      },
+      {
+        "name": "GraphQL",
+        "percentage": 90,
+        "experience": "Advanced"
+      },
+      {
+        "name": "gRPC",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "Actix-web",
+        "percentage": 75,
+        "experience": "Intermediate"
+      }
+    ],
+    "🗃️ Databases": [
+      {
+        "name": "PostgreSQL",
+        "percentage": 85,
+        "experience": "Advanced"
+      },
+      {
+        "name": "MongoDB",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "ArangoDB",
+        "percentage": 80,
+        "experience": "Intermediate"
+      }
+    ],
+    "🔧 Tools & DevOps": [
+      {
+        "name": "Docker",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "Kubernetes",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "Webpack",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "esbuild",
+        "percentage": 75,
+        "experience": "Intermediate"
+      }
+    ],
+    "📊 Data Formats & Protocols": [
+      {
+        "name": "Protobuf",
+        "percentage": 80,
+        "experience": "Intermediate"
+      },
+      {
+        "name": "JSON",
+        "percentage": 95,
+        "experience": "Expert"
+      },
+      {
+        "name": "WebSockets",
+        "percentage": 95,
+        "experience": "Expert"
+      }
+    ]
+  },
+  "techFacts": [
+    "The first computer bug was an actual bug found in 1947",
+    "The term 'debugging' was coined by Grace Hopper",
+    "There are more possible chess games than atoms in the universe",
+    "The first computer programmer was Ada Lovelace in 1843",
+    "Linux powers 96.3% of the world's top 1 million web servers",
+    "Go was created at Google by Rob Pike, Ken Thompson, and Robert Griesemer",
+    "The first version of Git was written in just 2 weeks",
+    "PostgreSQL is older than MySQL by 5 years",
+    "The word 'robot' comes from the Czech word 'robota' meaning work",
+    "The @ symbol was used in emails for the first time in 1971"
+  ],
+  "asciiArt": {
+    "logo": "\n    ╭ ─────────────────────────────────────────────────────────────────── ╮\n                                                                           \n    │                                                                     │\n    │      █████╗ ██████╗ ███╗   ███╗███████╗██████╗ ███████╗██╗   ██╗    │\n    │     ██╔══██╗██╔══██╗████╗ ████║██╔════╝██╔══██╗██╔════╝██║   ██║    │\n    ⚡    ███████║██████╔╝██╔████╔██║█████╗  ██║  ██║█████╗  ██║   ██║    ⚡\n    │     ██╔══██║██╔══██╗██║╚██╔╝██║██╔══╝  ██║  ██║██╔══╝  ╚██╗ ██╔╝    │\n    │     ██║  ██║██║  ██║██║ ╚═╝ ██║███████╗██████╔╝███████╗ ╚████╔╝     │\n    │     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═════╝ ╚══════╝  ╚═══╝      │\n    │                                                                     │\n                                                                          \n    ╰ ─────────────────────────────────────────────────────────────────── ╯\n",
+    "contact": "\n    ╭─────────────────────╮\n    │  Let's build cool   │\n    │  stuff together! 🚀 │\n    ╰─────────────────────╯\n         │\n         ▼\n       ┌─────────┐\n       │ ( ◕‿◕ ) │\n       └─────────┘\n"
+  }
+}

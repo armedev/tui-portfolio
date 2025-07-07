@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"log"
 	"math"
 	"math/rand"
 	"strings"
@@ -32,6 +33,7 @@ type PortfolioModel struct {
 	styles         *PortfolioStyles
 	ready          bool
 	animationTick  int
+	dataLoader     *DataLoader
 
 	// Explosion effects only
 	particles      []Particle
@@ -55,7 +57,7 @@ const (
 	offsetWindowHeight int = 10
 )
 
-func NewPortfolioModel(width, height int) *PortfolioModel {
+func NewPortfolioModel(width, height int, dataLoader *DataLoader) *PortfolioModel {
 	vp := viewport.New(width-offsetWindowWidth, height-offsetWindowHeight)
 
 	model := &PortfolioModel{
@@ -75,6 +77,7 @@ func NewPortfolioModel(width, height int) *PortfolioModel {
 		particles:      make([]Particle, 0),
 		effectsEnabled: true,
 		startTime:      time.Now(),
+		dataLoader:     dataLoader,
 	}
 
 	model.updateContent()
@@ -131,6 +134,15 @@ func (m *PortfolioModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, nil
 		case msg.String() == "e":
 			m.effectsEnabled = !m.effectsEnabled
+			return m, nil
+		case msg.String() == "r":
+			// Reload data (useful for development)
+			if err := m.dataLoader.ReloadData(); err != nil {
+				log.Printf("Failed to reload data: %v", err)
+			} else {
+				m.updateContent()
+				log.Printf("Data reloaded successfully")
+			}
 			return m, nil
 		case msg.String() == "x":
 			m.addExplosion(m.viewport.Width/2, m.viewport.Height/2)
@@ -417,7 +429,7 @@ func (m *PortfolioModel) renderTabs() string {
 }
 
 func (m *PortfolioModel) renderFooter() string {
-	help := "Tab/Shift+Tab: Navigate • ?: Help • e: Toggle Effects • x: Explosion • q: Quit"
+	help := "Tab/Shift+Tab: Navigate • ?: Help • e: Toggle Effects • r: Reload Data • x: Explosion • q: Quit"
 
 	status := ("💻 Portfolio on Interactive Terminal 🎮")
 
